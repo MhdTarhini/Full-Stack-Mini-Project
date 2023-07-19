@@ -1,6 +1,9 @@
 <?php
 include('connection.php');
 
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+
+
 $username = $_POST['username'];
 $password = $_POST['password'];
 // $name='mohamad';
