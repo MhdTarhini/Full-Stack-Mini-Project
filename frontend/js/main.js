@@ -9,7 +9,7 @@ function getValidation() {
   let button = document.querySelector(".sign-in");
   let input_data = {
     username: username_input.value,
-    password: parseInt(user_password.value),
+    password: user_password.value,
   };
   fetch("http://localhost/Full%20Stack%20Mini%20Project/backend/signin.php", {
     method: "POST",

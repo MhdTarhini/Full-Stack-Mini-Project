@@ -15,9 +15,8 @@ $input_password = $input_data['password'];
 $query = $mysqli->prepare('select id,username,password from user where username=?');
 $query->bind_param('s', $input_username);
 $query->execute();
-
 $query->store_result();
-$query->bind_result($id, $username, $password);
+$query->bind_result($id, $username, $hashed_password);
 $query->fetch();
 $num_rows = $query->num_rows();
 
@@ -26,7 +25,7 @@ $num_rows = $query->num_rows();
 if ($num_rows == 0) {
     $response['status'] = "user not found";
 } else {
-    if ($input_password == $password) {
+    if (password_verify($input_password, $hashed_password)) {
         $response['status'] = 'logged in';
         $response['username'] = $username;
 

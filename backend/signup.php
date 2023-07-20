@@ -20,7 +20,7 @@ $username_exists = $check_username->num_rows();
 if ($username_exists == 0) {
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
     $query = $mysqli->prepare('insert into user(username,email,password) values(?,?,?)');
-    $query->bind_param('sss', $username, $email, $password);
+    $query->bind_param('sss', $username, $email, $hashed_password);
     $query->execute();
 
     $response['status'] = "success";
