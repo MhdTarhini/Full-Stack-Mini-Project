@@ -22,13 +22,10 @@ function getValidation() {
     .then((data) => {
       if (data.status === "logged in") {
         button.style.backgroundColor = "green";
+        window.location.href = `welcome.html?username=${data.username}`;
         isSignin(data);
       } else {
         button.style.backgroundColor = "red";
       }
     });
-}
-
-function isSignin(data) {
-  document.getElementsByClassName("username").innerHtml = data.username;
 }

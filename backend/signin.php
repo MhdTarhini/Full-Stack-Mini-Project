@@ -3,6 +3,7 @@ include('connection.php');
 
 // Allow the following HTTP headers for CORS requests, including the Content-Type header.
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+
 $post_data = file_get_contents("php://input");
 
 $input_data = json_decode($post_data, true);
@@ -21,9 +22,7 @@ $query->fetch();
 $num_rows = $query->num_rows();
 
 
-if ($num_rows == 0) {
-    $response['status'] = "user not found";
-} else {
+ 
 if ($num_rows == 0) {
     $response['status'] = "user not found";
 } else {
@@ -34,6 +33,5 @@ if ($num_rows == 0) {
     } else {
         $response['status'] = "wrong password";
     }
-}
 }
 echo json_encode($response);
