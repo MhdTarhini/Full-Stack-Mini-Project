@@ -26,6 +26,8 @@ function getValidation() {
         isSignin(data);
       } else {
         button.style.backgroundColor = "red";
+        document.querySelector(".invalid").innerText =
+          "invalid username or password";
       }
     });
 }
